@@ -2,16 +2,16 @@ Suelo jugar Calabozos y Dragones con mis hijos, la ambientación auditiva la sue
 
 ## Empezando
 
-Solo hay que lanzar el servidor: 
+Primero instalar dependencias:
+
+```bash
+npm install
+```
+
+Luego, solo hay que lanzar el servidor: 
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Abrir [http://localhost:3000](http://localhost:3000) con el navegador, y tendremos nuestro tablero corriendo.
