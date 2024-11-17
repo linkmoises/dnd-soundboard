@@ -11,6 +11,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { ThemeToggle } from "@/components/ToogleDark"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDAndD } from '@fortawesome/free-brands-svg-icons';
 import { url } from 'inspector';
@@ -367,10 +368,13 @@ const RPGSoundboard = () => {
   return (
     <Card className="w-full min-h-screen">
       <CardHeader>
-        <CardTitle className="space-x-2">
-          <FontAwesomeIcon icon={faDAndD} className="text-2xl" />
-          <span className='text-2xl'>D&D Soundboard</span>
-        </CardTitle>
+        <div className="flex justify-between items-center">
+          <CardTitle className="space-x-2">
+            <FontAwesomeIcon icon={faDAndD} className="text-2xl" />
+            <span className='text-2xl'>D&D Soundboard</span>
+          </CardTitle>
+          <ThemeToggle />
+        </div>
       </CardHeader>
       <CardContent>
         <div className="flex flex-col lg:flex-row gap-6">

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ThemeProvider } from "@/providers/theme-provider"
 import localFont from "next/font/local";
 import "./globals.css";
 
@@ -24,15 +25,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es">
+    <html lang="es" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
         <link rel="icon" href="/favicon.ico" type="image/x-icon"/>
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      //   className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem={true}
+        >
         {children}
+        </ThemeProvider>
       </body>
     </html>
   );
