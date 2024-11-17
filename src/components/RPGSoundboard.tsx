@@ -11,6 +11,9 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faDAndD } from '@fortawesome/free-brands-svg-icons';
+import { url } from 'inspector';
 
 const AudioPlayer = ({ name, url, isLooping = false, license, onPlay, onStop }) => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -195,6 +198,23 @@ const AudioSection = ({ title, audioFiles, activeTracks, onPlay, onStop }) => (
   </div>
 );
 
+const AccordionSection = ({ title, children }: { title: string; children: React.ReactNode }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  return (
+    <div className="border-b">
+      <button
+        className="w-full text-lg font-semibold py-2 flex justify-between items-center"
+        onClick={() => setIsExpanded(!isExpanded)}
+      >
+        {title}
+        <span>{isExpanded ? "-" : "+"}</span>
+      </button>
+      {isExpanded && <div className="py-2">{children}</div>}
+    </div>
+  );
+};
+
 const RPGSoundboard = () => {
   const [activeTracks, setActiveTracks] = useState(new Set());
 
@@ -218,8 +238,40 @@ const RPGSoundboard = () => {
         isLooping: true,
         license: "Bardify ©"
       },
+      {
+        name: "La aventura comienza",
+        url: "/audio/music-bardify-adventure-begins",
+        isLooping: true,
+        license: "Bardify ©"
+      },
+      {
+        name: "La aventura termina",
+        url: "/audio/music-bardify-adventure-ends",
+        isLooping: true,
+        license: "Bardify ©"
+      },
+      {
+        name: "Fin de la búsqueda",
+        url: "/audio/music-bardify-end-quest",
+        isLooping: true,
+        license: "Bardify ©"
+      },
+    ],
+    combat: [
+      {
+        name: "Emboscada",
+        url: "audio/music-bardify-ambush",
+        isLooping: true,
+        license: "Bardify ©"
+      }
     ],
     ambient: [
+      { 
+        name: "Alcantarillas", 
+        url: "/audio/ambience-bardify-sewers", 
+        isLooping: true,
+        license: "Bardify ©"
+      },
       { 
         name: "Barco", 
         url: "/audio/ambience-bardify-ship", 
@@ -233,6 +285,12 @@ const RPGSoundboard = () => {
         license: "Bardify ©"
       },
       { 
+        name: "Bosque (nocturno)", 
+        url: "/audio/ambience-bardify-forest-night", 
+        isLooping: true,
+        license: "Bardify ©"
+      },
+      { 
         name: "Ciudad", 
         url: "/audio/ambience-bardify-city", 
         isLooping: true,
@@ -241,6 +299,24 @@ const RPGSoundboard = () => {
       { 
         name: "Cueva", 
         url: "/audio/ambience-bardify-cave", 
+        isLooping: true,
+        license: "Bardify ©"
+      },
+      { 
+        name: "Fogata", 
+        url: "/audio/ambience-bardify-campfire", 
+        isLooping: true,
+        license: "Bardify ©"
+      },
+      { 
+        name: "Mercado", 
+        url: "/audio/ambience-bardify-marketplace", 
+        isLooping: true,
+        license: "Bardify ©"
+      },
+      { 
+        name: "Pantano", 
+        url: "/audio/ambience-bardify-swamp", 
         isLooping: true,
         license: "Bardify ©"
       },
@@ -262,6 +338,24 @@ const RPGSoundboard = () => {
         isLooping: true,
         license: "Bardify ©"
       },
+      { 
+        name: "Ventisca", 
+        url: "/audio/ambience-bardify-blizzard", 
+        isLooping: true,
+        license: "Bardify ©"
+      },
+      { 
+        name: "Villa", 
+        url: "/audio/ambience-bardify-village", 
+        isLooping: true,
+        license: "Bardify ©"
+      },
+      { 
+        name: "Volcán", 
+        url: "/audio/ambience-bardify-volcano", 
+        isLooping: true,
+        license: "Bardify ©"
+      },
     ],
     effects: [
       { 
@@ -276,20 +370,31 @@ const RPGSoundboard = () => {
   return (
     <Card className="w-full min-h-screen">
       <CardHeader>
-        <CardTitle>D&D Soundboard</CardTitle>
+        <CardTitle className="space-x-2">
+          <FontAwesomeIcon icon={faDAndD} className="text-2xl" />
+          <span className='text-2xl'>D&D Soundboard</span>
+        </CardTitle>
       </CardHeader>
       <CardContent>
         <div className="flex flex-col lg:flex-row gap-6">
           {/* Columna izquierda: Música */}
           <div className="lg:w-1/3 space-y-6">
-            <AudioSection
-              title="Música"
-              audioFiles={audioFiles.music}
-              activeTracks={activeTracks}
-              onPlay={handlePlay}
-              onStop={handleStop}
-            />
-            
+            <AccordionSection title="Música para Eventos y Situaciones">
+              <AudioSection
+                audioFiles={audioFiles.music}
+                activeTracks={activeTracks}
+                onPlay={handlePlay}
+                onStop={handleStop}
+              />
+            </AccordionSection>
+            <AccordionSection title="Música para Combates">
+              <AudioSection
+                audioFiles={audioFiles.combat}
+                activeTracks={activeTracks}
+                onPlay={handlePlay}
+                onStop={handleStop}
+              />
+            </AccordionSection>
           </div>
           {/* Columna central: Ambientación */}
           <div className="lg:w-1/3">
@@ -316,7 +421,7 @@ const RPGSoundboard = () => {
       <CardFooter className="flex flex-col items-start text-sm text-muted-foreground">
         <p className="mb-2">Información:</p>
         <ul className="list-disc list-inside space-y-1">
-          <li>La mayor parte de Música y Ambientación pertenece al canal de YouTube: <a href="https://www.youtube.com/@bardify">Bardify</a>.</li>
+          <li>La mayor parte de Música y Ambientación que utilizo pertenece al canal de YouTube: <a href="https://www.youtube.com/@bardify">Bardify</a>.</li>
           <li>Los efectos de sonido los he colectando con el tiempo y de algunos no recuerdo su procedencia.</li>
           <li>D&D Soundboard es contenido de fans no oficial permitido por la Política de contenido de fans. No está aprobado ni respaldado por Wizards of the Coast.</li>
         </ul>
