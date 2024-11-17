@@ -22,15 +22,12 @@ const AudioPlayer = ({ name, url, isLooping = false, license, onPlay, onStop }) 
   const [canPlay, setCanPlay] = useState(false);
   const audioRef = useRef(null);
 
-  // Función para obtener las URLs de diferentes formatos
   const getAudioSources = (baseUrl) => {
     const formats = [
-      { type: 'audio/mpeg', ext: 'mp3' },
       { type: 'audio/ogg; codecs="opus"', ext: 'opus' },
       { type: 'audio/wav', ext: 'wav' }
     ];
     
-    // Remove the extension from the base URL if it exists
     const baseUrlWithoutExt = baseUrl.replace(/\.[^/.]+$/, '');
     
     return formats.map(format => ({
