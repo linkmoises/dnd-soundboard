@@ -261,7 +261,49 @@ const RPGSoundboard = () => {
         url: "audio/music-bardify-ambush",
         isLooping: true,
         license: "Bardify ©"
-      }
+      },
+      {
+        name: "Huida de guardias",
+        url: "audio/music-bardify-running-from-guards",
+        isLooping: true,
+        license: "Bardify ©"
+      },
+      {
+        name: "Jefe de Mazmorra",
+        url: "audio/music-bardify-dungeon-boss",
+        isLooping: true,
+        license: "Bardify ©"
+      },
+      {
+        name: "Jefe final",
+        url: "audio/music-bardify-final-boss",
+        isLooping: true,
+        license: "Bardify ©"
+      },
+      {
+        name: "Pelea demoníaca",
+        url: "audio/music-bardify-fiend-fight",
+        isLooping: true,
+        license: "Bardify ©"
+      },
+      {
+        name: "Pelea épica",
+        url: "audio/music-bardify-epic-fight",
+        isLooping: true,
+        license: "Bardify ©"
+      },
+      {
+        name: "Persecusión",
+        url: "audio/music-bardify-chase",
+        isLooping: true,
+        license: "Bardify ©"
+      },
+      {
+        name: "Sorpresa",
+        url: "audio/music-bardify-surprise",
+        isLooping: true,
+        license: "Bardify ©"
+      },
     ],
     ambient: [
       { 
