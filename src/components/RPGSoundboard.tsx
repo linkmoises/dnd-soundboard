@@ -221,8 +221,38 @@ const RPGSoundboard = () => {
     ],
     ambient: [
       { 
+        name: "Barco", 
+        url: "/audio/ambience-bardify-ship", 
+        isLooping: true,
+        license: "Bardify ©"
+      },
+      { 
         name: "Bosque", 
         url: "/audio/ambience-bardify-forest", 
+        isLooping: true,
+        license: "Bardify ©"
+      },
+      { 
+        name: "Ciudad", 
+        url: "/audio/ambience-bardify-city", 
+        isLooping: true,
+        license: "Bardify ©"
+      },
+      { 
+        name: "Cueva", 
+        url: "/audio/ambience-bardify-cave", 
+        isLooping: true,
+        license: "Bardify ©"
+      },
+      { 
+        name: "Playa", 
+        url: "/audio/ambience-bardify-beach", 
+        isLooping: true,
+        license: "Bardify ©"
+      },
+      { 
+        name: "Taverna", 
+        url: "/audio/ambience-bardify-tavern", 
         isLooping: true,
         license: "Bardify ©"
       },
@@ -250,8 +280,8 @@ const RPGSoundboard = () => {
       </CardHeader>
       <CardContent>
         <div className="flex flex-col lg:flex-row gap-6">
-          {/* Columna izquierda: Música y Ambiente */}
-          <div className="lg:w-1/2 space-y-6">
+          {/* Columna izquierda: Música */}
+          <div className="lg:w-1/3 space-y-6">
             <AudioSection
               title="Música"
               audioFiles={audioFiles.music}
@@ -259,6 +289,10 @@ const RPGSoundboard = () => {
               onPlay={handlePlay}
               onStop={handleStop}
             />
+            
+          </div>
+          {/* Columna central: Ambientación */}
+          <div className="lg:w-1/3">
             <AudioSection
               title="Ambiente"
               audioFiles={audioFiles.ambient}
@@ -267,9 +301,8 @@ const RPGSoundboard = () => {
               onStop={handleStop}
             />
           </div>
-          
           {/* Columna derecha: Efectos de Sonido */}
-          <div className="lg:w-1/2">
+          <div className="lg:w-1/3">
             <AudioSection
               title="Efectos de Sonido"
               audioFiles={audioFiles.effects}
@@ -281,12 +314,11 @@ const RPGSoundboard = () => {
         </div>
       </CardContent>
       <CardFooter className="flex flex-col items-start text-sm text-muted-foreground">
-        <p className="mb-2">Información sobre licencias:</p>
+        <p className="mb-2">Información:</p>
         <ul className="list-disc list-inside space-y-1">
-          <li>CC0 - Contenido de dominio público, uso libre sin atribución</li>
-          <li>CC-BY 4.0 - Uso libre con atribución requerida</li>
-          <li>CC-BY-SA 4.0 - Uso libre con atribución y compartir bajo la misma licencia</li>
-          <li>© Todos los derechos reservados - Contenido original, uso no permitido sin autorización</li>
+          <li>La mayor parte de Música y Ambientación pertenece al canal de YouTube: <a href="https://www.youtube.com/@bardify">Bardify</a>.</li>
+          <li>Los efectos de sonido los he colectando con el tiempo y de algunos no recuerdo su procedencia.</li>
+          <li>D&D Soundboard es contenido de fans no oficial permitido por la Política de contenido de fans. No está aprobado ni respaldado por Wizards of the Coast.</li>
         </ul>
       </CardFooter>
     </Card>

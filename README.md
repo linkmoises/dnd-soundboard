@@ -1,8 +1,8 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Esta es un aplicación creada con [Next.js](https://nextjs.org) solo por diversión para cuando juego D&D con mis hijos. Es un tablero de sonidos para la ambientación de la partida.
 
-## Getting Started
+## Empezando
 
-First, run the development server:
+Solo hay que lanzar el servidor de desarrollo: 
 
 ```bash
 npm run dev
@@ -14,23 +14,45 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abrir [http://localhost:3000](http://localhost:3000) con el navegador, y tendremos nuestro tablero corriendo.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Para editar la lista de audios, los cambios se hacen en `src/components/RPGSoundboard.tsx`. La página se actualiza sola.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Añadiendo Audios
 
-## Learn More
+Para evitar algún tema legal, este proyecto se distribuye sin archivos de audio. Los archivos de audio se añaden en el directorio: `public/audio`. Yo los mantengo con una estructura de prefijos antes del título: `ambience-autor-titulo`, `music-autor-titulo`, `sfx-autor-titulo`.
 
-To learn more about Next.js, take a look at the following resources:
+Admite archivos de audio en formato `opus`, `mp3` y `wav`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+La lista de audios que se muestran se edita en 
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```TSX
+    music: [
+      { 
+        name: "Música de ejemplo", 
+        url: "/audio/music-example", 
+        isLooping: true,
+        license: "CC0 - Dominio Público"
+      },
+    ],
+    ambient: [
+      { 
+        name: "Ambientación de ejemplo", 
+        url: "/audio/ambience-example", 
+        isLooping: true,
+        license: "CC0 - Dominio Público"
+      },
+    ],
+    effects: [
+      { 
+        name: "Sonido de ejemplo", 
+        url: "/audio/sfx-example", 
+        isLooping: false,
+        license: "CC0 - Dominio Público"
+      },
+    ]
+```
 
-## Deploy on Vercel
+## Créditos
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Los créditos de los audios son de sus respectivos autores. D&D Soundboard es contenido de fans no oficial permitido por la Política de contenido de fans. No está aprobado ni respaldado por Wizards of the Coast.
