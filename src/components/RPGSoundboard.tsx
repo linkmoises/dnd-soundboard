@@ -253,11 +253,11 @@ const RPGSoundboard = () => {
             <span className='text-2xl'>D&D Soundboard</span>
           </CardTitle>
           <div className="flex items-center space-x-4">
+          <ThemeToggle />
             <Button onClick={stopAllTracks} variant="destructive" size="sm">
               <StopCircle className="mr-2 h-4 w-4" />
               Detener Todo
             </Button>
-            <ThemeToggle />
           </div>
         </div>
       </CardHeader>
