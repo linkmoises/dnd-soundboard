@@ -8,6 +8,12 @@ Primero instalar dependencias:
 npm install
 ```
 
+Hay un problema con la dependencia fontawesome, en cuanto a la versión que descarga y su compatibilidad con React. Forzar la instalación permite que se instale de todas formas y corra el tablero de sonido:
+
+```bash
+npm install --force
+```
+
 Luego, solo hay que lanzar el servidor: 
 
 ```bash
@@ -30,7 +36,7 @@ La lista de audios que se muestran se edita en `src/components/RPGSoundboard.tsx
         name: "Música de ejemplo", 
         url: "/audio/music-example", 
         isLooping: true,
-        license: "CC0 - Dominio Público"
+        license: "Autor"
       },
     ],
     ambient: [
@@ -38,7 +44,7 @@ La lista de audios que se muestran se edita en `src/components/RPGSoundboard.tsx
         name: "Ambientación de ejemplo", 
         url: "/audio/ambience-example", 
         isLooping: true,
-        license: "CC0 - Dominio Público"
+        license: "Autor"
       },
     ],
     effects: [
@@ -46,14 +52,14 @@ La lista de audios que se muestran se edita en `src/components/RPGSoundboard.tsx
         name: "Sonido de ejemplo", 
         url: "/audio/sfx-example", 
         isLooping: false,
-        license: "CC0 - Dominio Público"
+        license: "Autor"
       },
     ]
 ```
 
 ## Funcionamiento
 
-El funcionamiento es simple. Solo hay que tocar el botón de _play_, el sonido fluirá. Pueden sonar varias pistas de audio a la vez, las cuales son resaltadas visualmente, cada una tiene su control de volumen individual. Los sonidos de efectos se pueden configurar para reproducirse en _loop_ o una sola vez.
+El funcionamiento es simple. Solo hay que tocar el botón de _play_, el sonido fluirá. Pueden sonar varias pistas de audio a la vez, las cuales son resaltadas visualmente, cada una tiene su control de volumen individual. Los efectos de sonido se pueden configurar para reproducirse en _loop_ o una sola vez.
 
 ## Créditos
 
