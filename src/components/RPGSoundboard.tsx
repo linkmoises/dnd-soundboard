@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from 'react';
-import { Volume2, Volume1, VolumeX, Play, Pause, RotateCcw, Info } from 'lucide-react';
+import { Volume2, Volume1, VolumeX, Play, Pause, RotateCcw, Info, StopCircle } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Slider } from '@/components/ui/slider';
 import { Button } from '@/components/ui/button';
@@ -15,12 +15,21 @@ import { ThemeToggle } from "@/components/ToogleDark"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDAndD } from '@fortawesome/free-brands-svg-icons';
 
-const AudioPlayer = ({ name, url, isLooping = false, license, onPlay, onStop }) => {
+const AudioPlayer = ({ name, url, isLooping = false, license, onPlay, onStop, stopAll }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [volume, setVolume] = useState(50);
   const [fadeInterval, setFadeInterval] = useState(null);
   const [canPlay, setCanPlay] = useState(false);
   const audioRef = useRef(null);
+
+  useEffect(() => {
+    if (stopAll && audioRef.current && !audioRef.current.paused) {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+      setIsPlaying(false);
+      onStop(name);
+    }
+  }, [stopAll, name, onStop]);
 
   const getAudioSources = (baseUrl) => {
     const formats = [
@@ -176,7 +185,7 @@ const AudioPlayer = ({ name, url, isLooping = false, license, onPlay, onStop }) 
   );
 };
 
-const AudioSection = ({ title, audioFiles, activeTracks, onPlay, onStop }) => (
+const AudioSection = ({ title, audioFiles, activeTracks, onPlay, onStop, stopAll }) => (
   <div>
     <h3 className="text-lg font-semibold mb-2">{title}</h3>
     <div className="space-y-2">
@@ -189,6 +198,7 @@ const AudioSection = ({ title, audioFiles, activeTracks, onPlay, onStop }) => (
           license={audio.license}
           onPlay={onPlay}
           onStop={onStop}
+          stopAll={stopAll}
         />
       ))}
     </div>
@@ -214,6 +224,7 @@ const AccordionSection = ({ title, children }: { title: string; children: React.
 
 const RPGSoundboard = () => {
   const [activeTracks, setActiveTracks] = useState(new Set());
+  const [stopAll, setStopAll] = useState(false);
 
   const handlePlay = (trackName) => {
     setActiveTracks(prev => new Set(prev).add(trackName));
@@ -225,6 +236,11 @@ const RPGSoundboard = () => {
       newSet.delete(trackName);
       return newSet;
     });
+  };
+
+  const stopAllTracks = () => {
+    setStopAll(true);
+    setTimeout(() => setStopAll(false), 100);
   };
 
   const audioFiles = {
@@ -893,7 +909,17 @@ const RPGSoundboard = () => {
             <FontAwesomeIcon icon={faDAndD} className="text-2xl" />
             <span className='text-2xl'>D&D Soundboard</span>
           </CardTitle>
-          <ThemeToggle />
+          <div className="flex items-center space-x-4">
+            <Button 
+              onClick={stopAllTracks}
+              variant="destructive"
+              size="sm"
+            >
+              <StopCircle className="mr-2 h-4 w-4" />
+              Detener Todo
+            </Button>
+            <ThemeToggle />
+          </div>
         </div>
       </CardHeader>
       <CardContent>
@@ -906,6 +932,7 @@ const RPGSoundboard = () => {
                 activeTracks={activeTracks}
                 onPlay={handlePlay}
                 onStop={handleStop}
+                stopAll={stopAll}
               />
             </AccordionSection>
             <AccordionSection title="Música para Combates">
@@ -914,6 +941,7 @@ const RPGSoundboard = () => {
                 activeTracks={activeTracks}
                 onPlay={handlePlay}
                 onStop={handleStop}
+                stopAll={stopAll}
               />
             </AccordionSection>
             <AccordionSection title="Música para Lugares Notables">
@@ -922,6 +950,7 @@ const RPGSoundboard = () => {
                 activeTracks={activeTracks}
                 onPlay={handlePlay}
                 onStop={handleStop}
+                stopAll={stopAll}
               />
             </AccordionSection>
             <AccordionSection title="Música para Mazmorras">
@@ -930,6 +959,7 @@ const RPGSoundboard = () => {
                 activeTracks={activeTracks}
                 onPlay={handlePlay}
                 onStop={handleStop}
+                stopAll={stopAll}
               />
             </AccordionSection>
             <AccordionSection title="Música para Tavernas">
@@ -938,6 +968,7 @@ const RPGSoundboard = () => {
                 activeTracks={activeTracks}
                 onPlay={handlePlay}
                 onStop={handleStop}
+                stopAll={stopAll}
               />
             </AccordionSection>
             <AccordionSection title="Música para Ciudades y Villas">
@@ -946,6 +977,7 @@ const RPGSoundboard = () => {
                 activeTracks={activeTracks}
                 onPlay={handlePlay}
                 onStop={handleStop}
+                stopAll={stopAll}
               />
             </AccordionSection>
             <AccordionSection title="Música para Planos Existenciales">
@@ -954,6 +986,7 @@ const RPGSoundboard = () => {
                 activeTracks={activeTracks}
                 onPlay={handlePlay}
                 onStop={handleStop}
+                stopAll={stopAll}
               />
             </AccordionSection>
           </div>
@@ -965,6 +998,7 @@ const RPGSoundboard = () => {
               activeTracks={activeTracks}
               onPlay={handlePlay}
               onStop={handleStop}
+              stopAll={stopAll}
             />
           </div>
           {/* Columna derecha: Efectos de Sonido */}
@@ -975,6 +1009,7 @@ const RPGSoundboard = () => {
               activeTracks={activeTracks}
               onPlay={handlePlay}
               onStop={handleStop}
+              stopAll={stopAll}
             />
           </div>
         </div>

@@ -26,9 +26,9 @@ Abrir [http://localhost:3000](http://localhost:3000) con el navegador, y tendrem
 
 Para evitar algún tema legal, este proyecto se distribuye sin archivos de audio. Los archivos de audio se añaden en el directorio: `public/audio`. Yo los mantengo con una estructura de prefijos antes del título: `ambience-autor-titulo`, `music-autor-titulo`, `sfx-autor-titulo`.
 
-La aplicación admite archivos de audio en formato `opus`, `mp3` y `wav`.
+La aplicación admite archivos de audio en formato `opus` y `wav`.
 
-La lista de audios que se muestran se edita en `src/components/RPGSoundboard.tsx`. La página se actualiza sola.
+La lista de audios que se muestran en el tablero se edita en `src/components/RPGSoundboard.tsx`. La página se actualiza automáticamente al guardar los cambios.
 
 ```TSX
     music: [
