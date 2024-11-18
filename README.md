@@ -28,33 +28,17 @@ Para evitar algún tema legal, este proyecto se distribuye sin archivos de audio
 
 La aplicación admite archivos de audio en formato `opus` y `wav`.
 
-La lista de audios que se muestran en el tablero se edita en `src/components/RPGSoundboard.tsx`. La página se actualiza automáticamente al guardar los cambios.
+La lista de audios que se muestran en el tablero se edita en `src/lib/audioFiles.ts`. Están ordenados en una especie de `array` organizado por secciones. El tablero se actualiza automáticamente al guardar los cambios, pero considerar añadir primero el audio al directorio de audios antes de añadirlo a `audioFiles.ts` para que se muestre inmediatamente y se pueda reproducir.
 
 ```TSX
-    music: [
-      { 
-        name: "Música de ejemplo", 
-        url: "/audio/music-example", 
-        isLooping: true,
-        license: "Autor"
-      },
-    ],
-    ambient: [
-      { 
-        name: "Ambientación de ejemplo", 
-        url: "/audio/ambience-example", 
-        isLooping: true,
-        license: "Autor"
-      },
-    ],
-    effects: [
-      { 
-        name: "Sonido de ejemplo", 
-        url: "/audio/sfx-example", 
-        isLooping: false,
-        license: "Autor"
-      },
-    ]
+  seccionespecifica: [
+    { 
+      name: "Audio de ejemplo", 
+      url: "/audio/audio-example", 
+      isLooping: true,
+      license: "Autor"
+    },
+  ],
 ```
 
 ## Funcionamiento
