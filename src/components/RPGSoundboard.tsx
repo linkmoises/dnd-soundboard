@@ -34,7 +34,6 @@ const AudioPlayer = ({ name, url, isLooping = false, license, onPlay, onStop, st
   const getAudioSources = (baseUrl) => {
     const formats = [
       { type: 'audio/ogg; codecs="opus"', ext: 'opus' },
-      { type: 'audio/wav', ext: 'wav' }
     ];
     
     const baseUrlWithoutExt = baseUrl.replace(/\.[^/.]+$/, '');
@@ -265,7 +264,7 @@ const RPGSoundboard = () => {
       <CardContent>
         <div className="flex flex-col lg:flex-row gap-6">
           {/* Columna izquierda: Música */}
-          <div className="lg:w-1/3 space-y-6">
+          <div className="lg:w-1/3 space-y-3">
             <AccordionSection title="Música para Eventos y Situaciones">
               <AudioSection
                 audioFiles={musicAudioFiles.music}

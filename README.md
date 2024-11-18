@@ -26,7 +26,13 @@ Abrir [http://localhost:3000](http://localhost:3000) con el navegador, y tendrem
 
 Para evitar algún tema legal, este proyecto se distribuye sin archivos de audio. Los archivos de audio se añaden en el directorio: `public/audio`. Yo los mantengo con una estructura de prefijos antes del título: `ambience-autor-titulo`, `music-autor-titulo`, `sfx-autor-titulo`.
 
-La aplicación admite archivos de audio en formato `opus` y `wav`.
+La aplicación originalmente admitía archivos de audio en formato `opus`, `mp3` y `wav`. Sin embargo al crecer la libería de audio (+7 GB), elimine el soporte de `mp3` y `wav` para evitar parsear archivos inexistentes ya que `opus` mantiene un mejor balance entre calidad y tamaño de archivo.
+
+Para convertir archivos de otros formatos a `opus`, se puede emplear `ffmpeg`:
+
+```bash
+ffmpeg -i input.mp3 -c:a libopus -b:a 128k output.opus
+```
 
 La lista de audios que se muestran en el tablero se edita en `src/lib/audioFiles.ts`. Están ordenados en una especie de `array` organizado por secciones. El tablero se actualiza automáticamente al guardar los cambios, pero considerar añadir primero el audio al directorio de audios antes de añadirlo a `audioFiles.ts` para que se muestre inmediatamente y se pueda reproducir.
 
