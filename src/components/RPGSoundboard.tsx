@@ -227,7 +227,7 @@ const AccordionSection = ({ title, children }: { title: string; children: React.
   );
 };
 
-import { musicAudioFiles, ambientAudioFiles, effectsAudioFiles } from '@/lib/audioFiles';
+import { musicAudioFiles, ambientAudioFiles, effectsAudioFiles, sfxAudioFiles } from '@/lib/audioFiles';
 
 const RPGSoundboard = () => {
   const [activeTracks, setActiveTracks] = useState(new Set());
@@ -269,11 +269,97 @@ const RPGSoundboard = () => {
       </CardHeader>
       <CardContent>
         <div className="flex flex-col lg:flex-row gap-6">
-          {/* Columna izquierda: Música */}
+          {/* Columna izquierda: Ambiente */}
+          <div className="lg:w-1/3">
+            <AudioSection
+              title="Ambiente"
+              audioFiles={ambientAudioFiles}
+              activeTracks={activeTracks}
+              onPlay={handlePlay}
+              onStop={handleStop}
+              stopAll={stopAll}
+            />
+          </div>
+          {/* Columna central: Efectos de sonido */}
+          <div className="lg:w-1/3 space-y-3">
+            <AccordionSection title="Naturaleza">
+              <AudioSection
+                audioFiles={effectsAudioFiles.nature}
+                activeTracks={activeTracks}
+                onPlay={handlePlay}
+                onStop={handleStop}
+                stopAll={stopAll}
+              />
+            </AccordionSection>
+            <AccordionSection title="Animales">
+              <AudioSection
+                audioFiles={effectsAudioFiles.animales}
+                activeTracks={activeTracks}
+                onPlay={handlePlay}
+                onStop={handleStop}
+                stopAll={stopAll}
+              />
+            </AccordionSection>
+            <AccordionSection title="Naturaleza">
+              <AudioSection
+                audioFiles={effectsAudioFiles.nature}
+                activeTracks={activeTracks}
+                onPlay={handlePlay}
+                onStop={handleStop}
+                stopAll={stopAll}
+              />
+            </AccordionSection>
+            <AccordionSection title="Acciones y objetos">
+              <AudioSection
+                audioFiles={effectsAudioFiles.acciones}
+                activeTracks={activeTracks}
+                onPlay={handlePlay}
+                onStop={handleStop}
+                stopAll={stopAll}
+              />
+            </AccordionSection>
+            <AccordionSection title="Dragones">
+              <AudioSection
+                audioFiles={effectsAudioFiles.dragones}
+                activeTracks={activeTracks}
+                onPlay={handlePlay}
+                onStop={handleStop}
+                stopAll={stopAll}
+              />
+            </AccordionSection>
+            <AccordionSection title="Combate y batallas">
+              <AudioSection
+                audioFiles={effectsAudioFiles.batallas}
+                activeTracks={activeTracks}
+                onPlay={handlePlay}
+                onStop={handleStop}
+                stopAll={stopAll}
+              />
+            </AccordionSection>
+            <AccordionSection title="Personas y reacciones">
+              <AudioSection
+                audioFiles={effectsAudioFiles.personas}
+                activeTracks={activeTracks}
+                onPlay={handlePlay}
+                onStop={handleStop}
+                stopAll={stopAll}
+              />
+            </AccordionSection>
+            <AccordionSection title="Monstruos">
+              <AudioSection
+                audioFiles={effectsAudioFiles.monstruos}
+                activeTracks={activeTracks}
+                onPlay={handlePlay}
+                onStop={handleStop}
+                stopAll={stopAll}
+              />
+            </AccordionSection>
+          </div>      
+          {/* Columna derecha: Musica */}
           <div className="lg:w-1/3 space-y-3">
             <AccordionSection title="Música para Eventos y Situaciones">
               <AudioSection
-                audioFiles={musicAudioFiles.music}
+                audioFiles={musicAudioFiles.events}
                 activeTracks={activeTracks}
                 onPlay={handlePlay}
                 onStop={handleStop}
@@ -335,28 +421,7 @@ const RPGSoundboard = () => {
               />
             </AccordionSection>
           </div>
-          {/* Columna central: Ambientación */}
-          <div className="lg:w-1/3">
-            <AudioSection
-              title="Ambiente"
-              audioFiles={ambientAudioFiles}
-              activeTracks={activeTracks}
-              onPlay={handlePlay}
-              onStop={handleStop}
-              stopAll={stopAll}
-            />
-          </div>
-          {/* Columna derecha: Efectos de Sonido */}
-          <div className="lg:w-1/3">
-            <AudioSection
-              title="Efectos de Sonido"
-              audioFiles={effectsAudioFiles}
-              activeTracks={activeTracks}
-              onPlay={handlePlay}
-              onStop={handleStop}
-              stopAll={stopAll}
-            />
-          </div>
+          
         </div>
       </CardContent>
       <CardFooter className="flex flex-col items-start text-sm text-muted-foreground">

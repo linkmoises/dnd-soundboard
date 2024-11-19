@@ -51,8 +51,8 @@ La lista de audios que se muestran en el tablero se edita en `src/lib/audioFiles
 
 ## Funcionamiento
 
-El funcionamiento es simple. Solo hay que tocar el botón de _play_, el sonido fluirá. Pueden sonar varias pistas de audio a la vez, las cuales son resaltadas visualmente, cada una tiene su control de volumen individual. Los efectos de sonido se pueden configurar para reproducirse en _loop_ o una sola vez.
+El funcionamiento es simple. Solo hay que tocar el botón de _play_ y el sonido se reproducirá. Pueden sonar varias pistas de audio a la vez, las cuales son resaltadas visualmente y cada una tiene su control de volumen individual. Los efectos de sonido se pueden configurar para reproducirse en _loop_ o una sola vez.
 
 ## Créditos
 
-Los créditos de los audios son de sus respectivos autores. D&D Soundboard es contenido de fans no oficial permitido por la Política de contenido de fans. No está aprobado ni respaldado por Wizards of the Coast.
+D&D Soundboard es contenido de fans no oficial permitido por la Política de contenido de fans. No está aprobado ni respaldado por Wizards of the Coast.
