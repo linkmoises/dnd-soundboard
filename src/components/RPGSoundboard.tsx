@@ -31,6 +31,11 @@ const AudioPlayer = ({ name, url, isLooping = false, license, onPlay, onStop, st
     }
   }, [stopAll, name, onStop]);
 
+  const handleEnded = () => {
+    setIsPlaying(false);
+    if (onStop) onStop(name);
+  };
+
   const getAudioSources = (baseUrl) => {
     const formats = [
       { type: 'audio/ogg; codecs="opus"', ext: 'opus' },
@@ -127,6 +132,7 @@ const AudioPlayer = ({ name, url, isLooping = false, license, onPlay, onStop, st
         ref={audioRef}
         onCanPlay={handleCanPlay}
         onError={handleError}
+        onEnded={handleEnded}
       >
         {getAudioSources(url).map((source, index) => (
           <source key={index} src={source.src} type={source.type} />

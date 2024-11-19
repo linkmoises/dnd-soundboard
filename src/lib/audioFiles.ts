@@ -651,9 +651,297 @@ export const ambientAudioFiles = [
   
 export const effectsAudioFiles = [
     { 
-        name: "Puerta", 
-        url: "/audio/door", 
+        name: "Animal gruñendo", 
+        url: "/audio/sfx-sevillano-animal-grunendo", 
         isLooping: false,
-        license: "CC0 - Dominio Público"
+        license: "Salvador Sevillano ©"
+    },
+    {
+        name: "Animales en bosque",
+        url: "/audio/sfx-sevillano-animales-bosque",
+        isLooping: false,
+        license: "Sevillano ©"
+    },
+    {
+        name: "Bestia gruñendo",
+        url: "/audio/sfx-sevillano-bestia-rugiendo",
+        isLooping: false,
+        license: "Salvador Sevillano ©"
+    },
+    {
+        name: "Caballo bufando",
+        url: "/audio/sfx-sevillano-caballo-bufando",
+        isLooping: false,
+        license: "Sevillano ©"
+    },
+    {
+        name: "Caballo galopando",
+        url: "/audio/sfx-sevillano-caballo-galopando",
+        isLooping: false,
+        license: "Sevillano ©"
+    },
+    {
+        name: "Caballo relinchando",
+        url: "/audio/sfx-sevillano-caballo-relincha",
+        isLooping: false,
+        license: "Sevillano ©"
+    },
+    {
+        name: "Campanas de iglesia",
+        url: "/audio/sfx-sevillano-campanas-iglesia",
+        isLooping: false,
+        license: "Sevillano ©"
+    },
+    {
+        name: "Cavando",
+        url: "/audio/sfx-sevillano-cavando",
+        isLooping: false,
+        license: "Sevillano ©"
+    },
+    {
+        name: "Cerrando puerta",
+        url: "/audio/sfx-sevillano-cerrando-puerta",
+        isLooping: false,
+        license: "Sevillano ©"
+    },
+    {
+        name: "Corte profundo",
+        url: "/audio/sfx-sevillano-corte-profundo",
+        isLooping: false,
+        license: "Sevillano ©"
+    },
+    {
+        name: "Degollar",
+        url: "/audio/sfx-sevillano-degollar",
+        isLooping: false,
+        license: "Sevillano ©"
+    },
+    {
+        name: "Dragón comiendo personas",
+        url: "/audio/sfx-sevillano-dragon-comiendo-personas",
+        isLooping: false,
+        license: "Sevillano ©"
+    },
+    {
+        name: "Dragón esperando",
+        url: "/audio/sfx-sevillano-dragon-esperando",
+        isLooping: false,
+        license: "Sevillano ©"
+    },
+    {
+        name: "Dragón lanzando fuego",
+        url: "/audio/sfx-sevillano-dragon-fuego",
+        isLooping: false,
+        license: "Sevillano ©"
+    },
+    {
+        name: "Dragón gritando",
+        url: "/audio/sfx-sevillano-dragon-grito",
+        isLooping: false,
+        license: "Sevillano ©"
+    },
+    {
+        name: "Dragón gritando 2",
+        url: "/audio/sfx-sevillano-dragon-grito-2",
+        isLooping: false,
+        license: "Sevillano ©"
+    },
+    {
+        name: "Dragón rugiendo",
+        url: "/audio/sfx-sevillano-dragon-rugiendo",
+        isLooping: false,
+        license: "Sevillano ©"
+    },
+    {
+        name: "Dragón volador",
+        url: "/audio/sfx-sevillano-dragon-volador",
+        isLooping: false,
+        license: "Sevillano ©"
+    },
+    {
+        name: "Ejército andando",
+        url: "/audio/sfx-sevillano-ejercito-andando",
+        isLooping: false,
+        license: "Sevillano ©"
+    },
+    {
+        name: "Ejército de no muertos",
+        url: "/audio/sfx-sevillano-ejercito-no-muertos",
+        isLooping: false,
+        license: "Sevillano ©"
+    },
+    {
+        name: "Espadas luchando",
+        url: "/audio/sfx-sevillano-espadas-luchando",
+        isLooping: false,
+        license: "Sevillano ©"
+    },
+    {
+        name: "Espadas luchando 2",
+        url: "/audio/sfx-sevillano-espadas-machetes-luchando",
+        isLooping: false,
+        license: "Sevillano ©"
+    },
+    {
+        name: "Estocada",
+        url: "/audio/sfx-sevillano-estocada",
+        isLooping: false,
+        license: "Sevillano ©"
+    },
+    {
+        name: "Fantasma",
+        url: "/audio/sfx-sevillano-fantasma",
+        isLooping: false,
+        license: "Sevillano ©"
+    },
+    {
+        name: "Gallo",
+        url: "/audio/sfx-sevillano-gallo",
+        isLooping: false,
+        license: "Sevillano ©"
+    },
+    {
+        name: "Golpe metálico",
+        url: "/audio/sfx-sevillano-golpe-metal",
+        isLooping: false,
+        license: "Sevillano ©"
+    },
+    {
+        name: "Golpe",
+        url: "/audio/sfx-sevillano-golpe",
+        isLooping: false,
+        license: "Sevillano ©"
+    },
+    {
+        name: "Hombre expirando",
+        url: "/audio/sfx-sevillano-hombre-expirando",
+        isLooping: false,
+        license: "Sevillano ©"
+    },
+    {
+        name: "Hombre herido",
+        url: "/audio/sfx-sevillano-hombre-herido",
+        isLooping: false,
+        license: "Sevillano ©"
+    },
+    {
+        name: "Hombre risa malvada",
+        url: "/audio/sfx-sevillano-hombre-risa-malvada",
+        isLooping: false,
+        license: "Sevillano ©"
+    },
+    {
+        name: "Latigazo",
+        url: "/audio/sfx-sevillano-latigazo",
+        isLooping: false,
+        license: "Sevillano ©"
+    },
+    {
+        name: "Llamando a la puerta",
+        url: "/audio/sfx-sevillano-llamando-puerta",
+        isLooping: false,
+        license: "Sevillano ©"
+    },
+    {
+        name: "Monstruo risa malvada",
+        url: "/audio/sfx-sevillano-monstruo-risa-malvada",
+        isLooping: false,
+        license: "Sevillano ©"
+    },
+    {
+        name: "Muerto caminando",
+        url: "/audio/sfx-sevillano-muerto-caminando",
+        isLooping: false,
+        license: "Sevillano ©"
+    },
+    {
+        name: "Mujeres riendo",
+        url: "/audio/sfx-sevillano-mujeres-riendo",
+        isLooping: false,
+        license: "Sevillano ©"
+    },
+    {
+        name: "Mujer gritando",
+        url: "/audio/sfx-sevillano-mujer-gritando",
+        isLooping: false,
+        license: "Sevillano ©"
+    },
+    {
+        name: "Pasos",
+        url: "/audio/sfx-sevillano-pasos",
+        isLooping: false,
+        license: "Sevillano ©"
+    },
+    {
+        name: "Personas aplaudiendo",
+        url: "/audio/sfx-sevillano-personas-aplaudiendo",
+        isLooping: false,
+        license: "Sevillano ©"
+    },
+    {
+        name: "Personas enfadadas",
+        url: "/audio/sfx-sevillano-personas-enfadadas",
+        isLooping: false,
+        license: "Sevillano ©"
+    },
+    {
+        name: "Personas riendo",
+        url: "/audio/sfx-sevillano-personas-riendo",
+        isLooping: false,
+        license: "Sevillano ©"
+    },
+    {
+        name: "Puerta abriéndose",
+        url: "/audio/sfx-sevillano-puerta-abriendose",
+        isLooping: false,
+        license: "Sevillano ©"
+    },
+    {
+        name: "Reja",
+        url: "/audio/sfx-sevillano-reja",
+        isLooping: false,
+        license: "Sevillano ©"
+    },
+    {
+        name: "Río corriente",
+        url: "/audio/sfx-sevillano-rio-corriente",
+        isLooping: false,
+        license: "Sevillano ©"
+    },
+    {
+        name: "Rompiendo cristales",
+        url: "/audio/sfx-sevillano-rompiendo-cristales",
+        isLooping: false,
+        license: "Sevillano ©"
+    },
+    {
+        name: "Rotura con grito",
+        url: "/audio/sfx-sevillano-rotura-grito",
+        isLooping: false,
+        license: "Sevillano ©"
+    },
+    {
+        name: "Suspiro de miedo",
+        url: "/audio/sfx-sevillano-suspiro-miedo",
+        isLooping: false,
+        license: "Sevillano ©"
+    },
+    {
+        name: "Susurro de almas",
+        url: "/audio/sfx-sevillano-susurro-almas",
+        isLooping: false,
+        license: "Sevillano ©"
+    },
+    {
+        name: "Trasgo",
+        url: "/audio/sfx-sevillano-trasgo",
+        isLooping: false,
+        license: "Sevillano ©"
+    },
+    {
+        name: "Truenos",
+        url: "/audio/sfx-sevillano-truenos",
+        isLooping: false,
+        license: "Sevillano ©"
     },
 ];
