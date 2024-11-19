@@ -1,5 +1,7 @@
 Suelo jugar Calabozos y Dragones con mis hijos, la ambientación auditiva la suelo hacer con Spotify y con YouTube, pero desde hace un tiempo los anuncios han hecho que deje de utilizar mi canal favorito, [Bardify](https://www.youtube.com/@bardify). Por este motivo he terminado construyendo una aplicación con [React](https://react.dev/) y [Next.js](https://nextjs.org) solo por diversión, un tablero de sonidos para la ambientación de partidas de rol.
 
+![D&D Soundboard en acción](screenshot.png)
+
 ## Empezando
 
 Primero instalar dependencias:
