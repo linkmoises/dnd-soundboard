@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from 'react';
-import { Volume2, Volume1, VolumeX, Play, Pause, RotateCcw, Info, StopCircle } from 'lucide-react';
+import { Volume2, Volume1, VolumeX, Play, Pause, Repeat, Info, StopCircle } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Slider } from '@/components/ui/slider';
 import { Button } from '@/components/ui/button';
@@ -73,6 +73,7 @@ const AudioPlayer = ({ name, url, isLooping = false, license, onPlay, onStop, st
   const togglePlay = () => {
     if (audioRef.current?.paused) {
       audioRef.current.volume = volume / 100;
+      audioRef.current.loop = isLooping;
       audioRef.current.play().catch(error => {
         console.error('Error playing audio:', error);
       });
@@ -99,6 +100,7 @@ const AudioPlayer = ({ name, url, isLooping = false, license, onPlay, onStop, st
     if (audioRef.current) {
       audioRef.current.currentTime = 0;
       audioRef.current.volume = volume / 100;
+      audioRef.current.loop = true;
       audioRef.current.play().catch(error => {
         console.error('Error replaying audio:', error);
       });
@@ -154,7 +156,7 @@ const AudioPlayer = ({ name, url, isLooping = false, license, onPlay, onStop, st
           size="icon"
           disabled={!canPlay}
         >
-          <RotateCcw size={20} />
+          <Repeat size={20} />
         </Button>
       )}
       <div className="flex items-center space-x-2 flex-1">

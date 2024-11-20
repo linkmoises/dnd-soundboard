@@ -36,6 +36,12 @@ Para convertir archivos de otros formatos a `opus`, se puede emplear `ffmpeg`:
 ffmpeg -i input.mp3 -c:a libopus -b:a 128k output.opus
 ```
 
+Si se descargan los archivos desde Youtube, se puede emplear `yt-dlp` para descargarlos así:
+
+```bash
+yt-dlp -x https://www.youtube.com/watch?v=F8bYaMoQ2sM -o ambience-bardify-forest.opus
+```
+
 La lista de audios que se muestran en el tablero se edita en `src/lib/audioFiles.ts`. Están ordenados en una especie de `array` organizado por secciones. El tablero se actualiza automáticamente al guardar los cambios, pero considerar añadir primero el audio al directorio de audios antes de añadirlo a `audioFiles.ts` para que se muestre inmediatamente y se pueda reproducir.
 
 ```TSX
