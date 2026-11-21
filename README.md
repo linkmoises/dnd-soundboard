@@ -2,7 +2,7 @@
 
 ![Bardos...](bardos-taverna.webp)
 
-Suelo jugar Calabozos y Dragones con mis hijos y la ambientación de la mesa la hacía con Spotify y YouTube, hasta que los anuncios me hicieron dejar de usar mi canal favorito, [Bardify](https://www.youtube.com/@bardify) porque rompían el ritmo de la sesión. Así que terminé armando este tablero de sonidos para mis partidas con audio para ambientación, efectos para los golpes y música para cada escena, todo en una sola pantalla.
+Suelo jugar Calabozos y Dragones con mis hijos y la ambientación de la mesa la hacía con Spotify y YouTube, hasta que los anuncios de Youtube me hicieron dejar de usar mi canal favorito, [Bardify](https://www.youtube.com/@bardify), porque rompían el ritmo de la sesión. Así que terminé armando este tablero de sonidos para mis partidas con audio para ambientación, efectos para los golpes y música para cada escena, todo en una sola pantalla.
 
 ![D&D Soundboard en acción](screenshot.png)
 
@@ -93,9 +93,7 @@ Cuatro cosas y ya sabes manejarlo:
 - **Las tres secciones** son las tres columnas del tablero: `ambient` se ve como tarjetas, y `sfx` y `music` como grupos que se abren y se cierran (`groups`, cada uno con su `title` y sus `tracks`).
 - **Cada pista** lleva `name` (lo que se ve en pantalla) y `file` (el archivo dentro de `public/audio`, sin extensión). Opcionalmente `license` (el crédito que aparece al tocar el botón de información) y `loop` (`true` para bucle, `false` para que suene una sola vez). En Efectos lo normal es `false`, porque un trueno suena y termina; si querés una lluvia de fondo, esa pista sola puede llevar `loop: true` y sigue sonando hasta que la pares.
 - **El orden del archivo es el orden del tablero.** Nada se ordena solo: si quieres mover una pista, mueves sus líneas.
-- **`license` y `loop` se heredan.** Se escriben una vez en `defaults` y valen para todo; si una sección o un grupo necesita otra cosa, lo pisa; y una pista puntual puede pisar a los dos. Por eso el archivo queda corto.
-
-Editas el archivo, recargas la página y aparecen los cambios. Si te equivocaste en algo (una clave mal escrita, una pista sin nombre o sin licencia, un audio repetido), el tablero te lo dice en pantalla con la ruta exacta del problema, en lugar de quedarse en blanco.
+- **`license` y `loop` se heredan.** Se escriben una vez en `defaults` y valen para todo; si una sección, grupo o archivo necesita otra cosa, solo se añade puntualmente.
 
 ## Cómo se usa el tablero
 
@@ -108,19 +106,19 @@ Tocas un sonido y suena. Puedes tener varias pistas sonando a la vez: la ambient
 
 Todos los audios entran y salen suavecito. Cuando paras una pista, un canal o todo, el sonido se desvanece en lugar de cortarse de golpe, y los efectos de una sola vez también se desvanecen al terminar.
 
-## Si algo no suena
+## Si algo no suena...
 
 - Revisa que el archivo esté realmente en `public/audio` y que el `file` del catálogo coincida con su nombre, sin la extensión.
 - Si el tablero muestra un aviso con una ruta (por ejemplo `sfx.groups[0].tracks[2].file`), ahí está el problema: esa línea del catálogo tiene algo mal escrito.
 - Si te falta el catálogo, el tablero te lo dice; copia `public/tracks.example.yml` a `public/tracks.yml` y vuelve a empezar.
 - La portada que falta no rompe nada: la tarjeta se ve con un degradado.
 
+## Para quien quiera meter mano
+
+El proyecto es React + Next.js. Además de `pnpm dev`, hay `pnpm build` y `pnpm start` para producción, `pnpm lint` y `pnpm typecheck` para revisar el código, y `pnpm approve-builds` si alguna dependencia nueva necesita compilar algo (los scripts de instalación vienen bloqueados a propósito, ver `pnpm-workspace.yaml`).
+
 ## Créditos
 
 D&D Soundboard es contenido de fans no oficial permitido por la Política de contenido de fans. No está aprobado ni respaldado por Wizards of the Coast.
 
 La mayor parte de la música y la ambientación que uso es de [Bardify](https://www.youtube.com/@bardify). Los efectos los fui juntando con el tiempo y de algunos ya no recuerdo la procedencia; cada pista lleva su crédito en el catálogo, que es lo que aparece al tocar el botón de información.
-
-## Para quien quiera meter mano
-
-El proyecto es React + Next.js. Además de `pnpm dev`, hay `pnpm build` y `pnpm start` para producción, `pnpm lint` y `pnpm typecheck` para revisar el código, y `pnpm approve-builds` si alguna dependencia nueva necesita compilar algo (los scripts de instalación vienen bloqueados a propósito, ver `pnpm-workspace.yaml`).
