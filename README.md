@@ -1,6 +1,8 @@
 # D&D Soundboard
 
-Suelo jugar Calabozos y Dragones con mis hijos y la ambientación de la mesa la hacía con Spotify y YouTube, hasta que los anuncios me sacaron de mi canal favorito, [Bardify](https://www.youtube.com/@bardify). Así que terminé armando este tablero de sonidos para mis partidas: tarjetas para la ambientación, efectos para los golpes y la música para cada escena, todo en una sola pantalla y sin depender de internet.
+![Bardos...](bardos-taverna.webp)
+
+Suelo jugar Calabozos y Dragones con mis hijos y la ambientación de la mesa la hacía con Spotify y YouTube, hasta que los anuncios me hicieron dejar de usar mi canal favorito, [Bardify](https://www.youtube.com/@bardify) porque rompían el ritmo de la sesión. Así que terminé armando este tablero de sonidos para mis partidas con audio para ambientación, efectos para los golpes y música para cada escena, todo en una sola pantalla.
 
 ![D&D Soundboard en acción](screenshot.png)
 
