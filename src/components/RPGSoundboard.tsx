@@ -175,14 +175,9 @@ const RPGSoundboard = () => {
       <Card className="w-full min-h-screen pb-56 sm:pb-24">
         <CardHeader>
           <div className="flex justify-between items-center">
-            <CardTitle className="flex items-center text-2xl" aria-label="D&D Soundboard">
-              <span aria-hidden="true">D</span>
-              <FontAwesomeIcon
-                icon={faDAndD}
-                className="-mx-[0.06em] text-[1.3em]"
-                aria-hidden="true"
-              />
-              <span aria-hidden="true">D Soundboard</span>
+            <CardTitle className="space-x-2">
+              <FontAwesomeIcon icon={faDAndD} className="text-2xl" />
+              <span className="text-2xl">D&D Soundboard</span>
             </CardTitle>
             <div className="flex items-center space-x-4">
               <ThemeToggle />
