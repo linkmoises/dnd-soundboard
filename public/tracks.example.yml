@@ -1,0 +1,65 @@
+# Tu catálogo de sonidos.
+#
+# Copia este archivo como public/tracks.yml y edítalo a tu gusto. El tablero
+# lee ese archivo cada vez que abres la página, así que no hay que recompilar:
+# guardas los cambios, recargas y listo.
+#
+# El orden en que escribas las pistas es el orden en que aparecen en el
+# tablero. Nada se ordena solo, así que para mover algo basta con mover sus
+# líneas de sitio.
+#
+# Cada pista lleva:
+#   name     el nombre que se ve en pantalla (obligatorio)
+#   file     el archivo dentro de public/audio, sin la extensión (obligatorio)
+#   license  el crédito que aparece al tocar el botón de información (opcional)
+#   loop     true para que suene en bucle, false para que suene una sola vez (opcional)
+#
+# license y loop se pueden escribir una vez en "defaults", en la sección o en
+# un grupo, y las pistas de abajo lo heredan. Solo hay que repetirlos cuando
+# una pista se sale de lo heredado.
+#
+# Si algo quedó mal escrito, el tablero lo muestra en pantalla con la ruta
+# exacta del problema, por ejemplo: sfx.groups[0].tracks[2].file.
+
+defaults:
+  license: "Autor desconocido"
+  loop: true
+
+# Ambiente: se dibuja como tarjetas con portada, tres por fila.
+ambient:
+  tracks:
+    - name: "Bosque de noche"
+      file: "ambience-bardify-forest-night"
+    - name: "Taberna"
+      file: "ambience-bardify-tavern"
+      license: "Bardify ©"
+
+# Efectos: se dibuja como grupos que se abren y se cierran.
+# Como casi ningún efecto va en bucle, apagamos el loop para toda la sección.
+sfx:
+  loop: false
+  license: "Mi biblioteca"
+  groups:
+    - title: "Clima"
+      tracks:
+        - name: "Truenos"
+          file: "sfx-truenos"
+        - name: "Lluvia"
+          file: "sfx-lluvia"
+    - title: "Combate"
+      tracks:
+        - name: "Espadas"
+          file: "sfx-espadas"
+          license: "Sevillano ©"
+
+# Música: también por grupos.
+music:
+  groups:
+    - title: "Para el camino"
+      tracks:
+        - name: "Marcha"
+          file: "music-marcha"
+    - title: "En la taberna"
+      tracks:
+        - name: "Canción de taberna"
+          file: "music-bardify-tavern-song"

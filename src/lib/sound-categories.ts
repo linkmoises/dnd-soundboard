@@ -8,8 +8,8 @@ export type SoundCategoryDefinition = {
 
 export const SOUND_CATEGORIES: SoundCategoryDefinition[] = [
   { id: "ambient", label: "Ambientación", defaultVolume: 80 },
-  { id: "music", label: "Música", defaultVolume: 80 },
   { id: "sfx", label: "Efectos (SFX)", defaultVolume: 90 },
+  { id: "music", label: "Música", defaultVolume: 80 },
 ];
 
 export const getDefaultCategoryVolumes = (): Record<SoundCategory, number> =>

@@ -28,6 +28,12 @@
 .DS_Store
 *.pem
 .atl
+odd/
+
+# La biblioteca de audio pesa varios GB: no se versiona.
+/public/audio
+# El catálogo personal tampoco: en el repo solo va el ejemplo.
+/public/tracks.yml
 
 # debug
 npm-debug.log*

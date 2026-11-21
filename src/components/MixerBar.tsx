@@ -26,18 +26,9 @@ export const MixerBar = ({
   onVolumeChange,
   onStopCategory,
 }: MixerBarProps) => {
-  const totalActive = SOUND_CATEGORIES.reduce(
-    (total, category) => total + activeCounts[category.id],
-    0
-  );
-
-  if (totalActive === 0) {
-    return null;
-  }
-
   return (
-    <div className="fixed inset-x-0 bottom-0 z-40 border-t bg-background/95 shadow-lg backdrop-blur animate-in slide-in-from-bottom-4 duration-300">
-      <div className="mx-auto grid max-w-6xl gap-3 p-3 sm:grid-cols-3">
+    <div className="shrink-0 border-b bg-background/95 backdrop-blur">
+      <div className="grid w-full gap-3 p-3 sm:grid-cols-3">
         {SOUND_CATEGORIES.map((category) => {
           const count = activeCounts[category.id];
           const isActive = count > 0;
