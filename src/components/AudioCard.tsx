@@ -1,14 +1,9 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { Info, Music2, Pause, Play, Sparkles, Wind } from "lucide-react";
+import { Music2, Pause, Play, Sparkles, Wind } from "lucide-react";
 import { getAudioSources, getCardImage } from "@/lib/audio-sources";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
+import { CreditBadge } from "@/components/CreditBadge";
 import { useAudioTrack } from "@/hooks/useAudioTrack";
 import { cn } from "@/lib/utils";
 import type { SoundCategory } from "@/lib/sound-categories";
@@ -91,13 +86,13 @@ const AudioCard = ({
             <span
               aria-hidden
               className={cn(
-                "mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full border transition-colors",
+                "mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-sm font-medium transition-colors",
                 isPlaying
-                  ? "border-primary bg-primary text-primary-foreground"
-                  : "border-border text-foreground group-hover:border-primary/60"
+                  ? "border-transparent bg-primary text-primary-foreground shadow hover:bg-primary/90"
+                  : "border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground"
               )}
             >
-              {isPlaying ? <Pause size={12} /> : <Play size={12} />}
+              {isPlaying ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
             </span>
             <span
               title={name}
@@ -113,22 +108,11 @@ const AudioCard = ({
           ) : null}
         </div>
       </button>
-      <TooltipProvider>
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <button
-              type="button"
-              aria-label={`Ver crédito de ${name}`}
-              className="absolute right-2 top-2 z-10 grid h-6 w-6 place-items-center rounded-full border border-border/60 bg-background/70 text-muted-foreground opacity-80 backdrop-blur transition-opacity hover:text-foreground hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
-            >
-              <Info size={14} />
-            </button>
-          </TooltipTrigger>
-          <TooltipContent>
-            <p className="text-sm">{license}</p>
-          </TooltipContent>
-        </Tooltip>
-      </TooltipProvider>
+      <span className="absolute right-2 top-2 z-10">
+        <CreditBadge name={name}>
+          <p className="text-sm">{license}</p>
+        </CreditBadge>
+      </span>
     </div>
   );
 };

@@ -1,16 +1,12 @@
 "use client";
 
-import { Info, Pause, Play, Volume2 } from "lucide-react";
+import { Pause, Play, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
-import { getAudioSources } from "@/lib/audio-sources";
+import { CreditBadge } from "@/components/CreditBadge";
+import { getAudioSources, getCardImage } from "@/lib/audio-sources";
 import { useAudioTrack } from "@/hooks/useAudioTrack";
+import { cn } from "@/lib/utils";
 import type { SoundCategory } from "@/lib/sound-categories";
 
 export type AudioPlayerProps = {
@@ -57,9 +53,11 @@ const AudioPlayer = ({
   return (
     <div
       data-track={url}
-      className={`flex items-center space-x-4 p-2 border rounded-lg transition-colors duration-300 ${
-        isPlaying ? "bg-primary/10 border-primary" : "bg-background hover:bg-accent/50"
-      }`}
+      onClick={togglePlay}
+      className={cn(
+        "group relative flex cursor-pointer flex-col gap-1.5 rounded-lg border p-1.5 transition-colors duration-300",
+        isPlaying ? "border-primary bg-primary/10" : "border-border bg-background hover:bg-accent/50"
+      )}
     >
       <audio {...audioProps}>
         {getAudioSources(url).map((source) => (
@@ -67,42 +65,62 @@ const AudioPlayer = ({
         ))}
         Tu navegador no soporta el elemento de audio.
       </audio>
-      <Button
-        onClick={togglePlay}
-        variant={isPlaying ? "default" : "outline"}
-        size="icon"
-        aria-label={isPlaying ? `Pausar ${name}` : `Reproducir ${name}`}
+      <div
+        aria-hidden
+        className="relative flex aspect-video w-full items-center justify-center overflow-hidden rounded-sm bg-gradient-to-br from-primary/15 via-primary/5 to-transparent"
       >
-        {isPlaying ? <Pause size={20} /> : <Play size={20} />}
-      </Button>
-      <div className="flex items-center space-x-2 flex-1">
-        <Volume2 size={20} className="shrink-0" />
-        <Slider
-          value={[volume]}
-          onValueChange={handleVolumeChange}
-          max={100}
-          min={0}
-          step={1}
+        <Sparkles className="h-4 w-4 text-primary/30" strokeWidth={1.5} />
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url("${getCardImage(url)}")` }}
         />
       </div>
-      <div className="flex items-center space-x-2">
-        <span className="text-sm font-medium">{name}</span>
-        <TooltipProvider>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Button variant="ghost" size="icon">
-                <Info size={16} />
-              </Button>
-            </TooltipTrigger>
-            <TooltipContent>
-              <p className="text-sm">{license}</p>
-              {loadFailed && (
-                <p className="text-sm text-destructive">No se pudo reproducir el audio</p>
-              )}
-            </TooltipContent>
-          </Tooltip>
-        </TooltipProvider>
+      <span
+        title={name}
+        className="line-clamp-2 min-h-[1.9rem] text-xs font-medium leading-tight"
+      >
+        {name}
+      </span>
+      <div className="flex items-center gap-1.5">
+        <Button
+          onClick={(event) => {
+            event.stopPropagation();
+            togglePlay();
+          }}
+          variant={isPlaying ? "default" : "outline"}
+          size="icon"
+          className="h-6 w-6 shrink-0 rounded-full"
+          aria-label={isPlaying ? `Pausar ${name}` : `Reproducir ${name}`}
+        >
+          {isPlaying ? <Pause size={14} /> : <Play size={14} />}
+        </Button>
+        <div
+          className="min-w-0 flex-1"
+          onClick={(event) => event.stopPropagation()}
+          onPointerDown={(event) => event.stopPropagation()}
+        >
+          <Slider
+            compact
+            value={[volume]}
+            onValueChange={handleVolumeChange}
+            max={100}
+            min={0}
+            step={1}
+            aria-label={`Volumen de ${name}`}
+          />
+        </div>
       </div>
+      <span
+        className="absolute right-2 top-2 z-10"
+        onClick={(event) => event.stopPropagation()}
+      >
+        <CreditBadge name={name}>
+          <p className="text-sm">{license}</p>
+          {loadFailed && (
+            <p className="text-sm text-destructive">No se pudo reproducir el audio</p>
+          )}
+        </CreditBadge>
+      </span>
     </div>
   );
 };

@@ -51,8 +51,29 @@ const AudioSection = ({
     return <p className="text-sm text-muted-foreground">Sin pistas.</p>;
   }
 
+  if (category === "music") {
+    return (
+      <div className="grid auto-rows-fr grid-cols-3 gap-3">
+        {tracks.map((audio) => (
+          <AudioCard
+            key={audio.url}
+            name={audio.name}
+            url={audio.url}
+            license={audio.license}
+            category="music"
+            isLooping={audio.isLooping}
+            stopAllToken={stopAllToken}
+            categoryStopToken={stopTokens.music}
+            onPlay={onPlay}
+            onStop={onStop}
+          />
+        ))}
+      </div>
+    );
+  }
+
   return (
-    <div className="space-y-2">
+    <div className="grid grid-cols-3 gap-2">
       {tracks.map((audio) => (
         <AudioPlayer
           key={audio.url}
@@ -87,6 +108,9 @@ const AccordionSection = ({ title, children }: { title: string; children: React.
     </div>
   );
 };
+
+const COLUMN_TITLE_CLASS =
+  "mb-3 text-xs font-semibold uppercase tracking-widest text-muted-foreground";
 
 const GroupColumn = ({
   groups,
@@ -274,7 +298,7 @@ const RPGSoundboard = () => {
         <div className="flex flex-col gap-6 lg:flex-row">
           {/* Columna izquierda: Ambiente */}
           <div className="lg:w-1/3">
-            <h3 className="text-lg font-semibold mb-2">Ambiente</h3>
+            <h3 className={COLUMN_TITLE_CLASS}>Ambiente</h3>
             {catalog.ambient.length === 0 ? (
               <p className="text-sm text-muted-foreground">Sin pistas.</p>
             ) : (
@@ -297,20 +321,26 @@ const RPGSoundboard = () => {
             )}
           </div>
           {/* Columna central: Efectos de sonido */}
-          <div className="lg:w-1/3 space-y-3">
-            <GroupColumn
-              groups={catalog.sfx}
-              category="sfx"
-              playbackHandlers={playbackHandlers}
-            />
+          <div className="lg:w-1/3">
+            <h3 className={COLUMN_TITLE_CLASS}>Efectos (SFX)</h3>
+            <div className="space-y-3">
+              <GroupColumn
+                groups={catalog.sfx}
+                category="sfx"
+                playbackHandlers={playbackHandlers}
+              />
+            </div>
           </div>
           {/* Columna derecha: Música */}
-          <div className="lg:w-1/3 space-y-3">
-            <GroupColumn
-              groups={catalog.music}
-              category="music"
-              playbackHandlers={playbackHandlers}
-            />
+          <div className="lg:w-1/3">
+            <h3 className={COLUMN_TITLE_CLASS}>Música</h3>
+            <div className="space-y-3">
+              <GroupColumn
+                groups={catalog.music}
+                category="music"
+                playbackHandlers={playbackHandlers}
+              />
+            </div>
           </div>
         </div>
         <footer className="border-t pt-4 text-sm text-muted-foreground">
