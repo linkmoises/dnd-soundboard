@@ -3,13 +3,17 @@ export type AudioSource = {
   type: string;
 };
 
-export const getAudioSources = (baseUrl: string): AudioSource[] => {
-  const baseUrlWithoutExt = baseUrl.replace(/\.[^/.]+$/, "");
+/** Cover images share the audio file name and only change the extension. */
+export const CARD_IMAGE_EXTENSION = "webp";
 
-  return [
-    {
-      src: `${baseUrlWithoutExt}.opus`,
-      type: 'audio/ogg; codecs="opus"',
-    },
-  ];
-};
+const stripExtension = (baseUrl: string) => baseUrl.replace(/\.[^/.]+$/, "");
+
+export const getAudioSources = (baseUrl: string): AudioSource[] => [
+  {
+    src: `${stripExtension(baseUrl)}.opus`,
+    type: 'audio/ogg; codecs="opus"',
+  },
+];
+
+export const getCardImage = (baseUrl: string) =>
+  `${stripExtension(baseUrl)}.${CARD_IMAGE_EXTENSION}`;

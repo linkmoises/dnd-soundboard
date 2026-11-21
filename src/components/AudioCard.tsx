@@ -2,7 +2,7 @@
 
 import type { ReactNode } from "react";
 import { Music2, Pause, Play, Sparkles, Wind } from "lucide-react";
-import { getAudioSources } from "@/lib/audio-sources";
+import { getAudioSources, getCardImage } from "@/lib/audio-sources";
 import { useAudioTrack } from "@/hooks/useAudioTrack";
 import { cn } from "@/lib/utils";
 import type { SoundCategory } from "@/lib/sound-categories";
@@ -18,7 +18,6 @@ export type AudioCardProps = {
   url: string;
   license: string;
   category: SoundCategory;
-  image?: string;
   isLooping?: boolean;
   stopAllToken: number;
   categoryStopToken: number;
@@ -31,13 +30,14 @@ const AudioCard = ({
   url,
   license,
   category,
-  image,
   isLooping = false,
   stopAllToken,
   categoryStopToken,
   onPlay,
   onStop,
 }: AudioCardProps) => {
+  const image = getCardImage(url);
+
   const { audioProps, isPlaying, loadFailed, togglePlay } = useAudioTrack({
     name,
     url,
@@ -71,10 +71,13 @@ const AudioCard = ({
       </audio>
       <div
         aria-hidden
-        className="flex aspect-square w-full items-center justify-center bg-gradient-to-br from-primary/15 via-primary/5 to-transparent bg-cover bg-center"
-        style={image ? { backgroundImage: `url("${image}")` } : undefined}
+        className="relative flex aspect-square w-full items-center justify-center overflow-hidden bg-gradient-to-br from-primary/15 via-primary/5 to-transparent"
       >
-        {!image && CATEGORY_PLACEHOLDER_ICONS[category]}
+        {CATEGORY_PLACEHOLDER_ICONS[category]}
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url("${image}")` }}
+        />
       </div>
       <div className="flex min-h-[4.75rem] flex-1 flex-col gap-1.5 p-2">
         <div className="flex items-start gap-2">

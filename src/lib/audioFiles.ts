@@ -3,7 +3,6 @@ export type AudioTrackData = {
     url: string;
     isLooping: boolean;
     license: string;
-    image?: string;
 };
 
 export const musicAudioFiles = {

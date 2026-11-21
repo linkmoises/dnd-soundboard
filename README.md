@@ -65,13 +65,12 @@ La lista de audios que se muestran en el tablero se edita en `src/lib/audioFiles
       name: "Audio de ejemplo", 
       url: "/audio/audio-example", 
       isLooping: true,
-      license: "Autor",
-      image: "/audio/cover-ejemplo.jpg" // opcional
+      license: "Autor"
     },
   ],
 ```
 
-`image` es opcional: si no se indica, la tarjeta muestra un degradado con el icono de su categoría.
+Las portadas de las tarjetas se resuelven por convención: **el mismo nombre que el audio, cambiando solo la extensión**. Para `/audio/ambience-bardify-forest` la tarjeta busca `/audio/ambience-bardify-forest.webp`. Si el archivo no existe, la tarjeta muestra un degradado con el icono de su categoría. Si prefieres otro formato, cambia `CARD_IMAGE_EXTENSION` en `src/lib/audio-sources.ts`.
 
 ## Funcionamiento
 

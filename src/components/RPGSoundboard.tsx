@@ -194,7 +194,6 @@ const RPGSoundboard = () => {
                     name={audio.name}
                     url={audio.url}
                     license={audio.license}
-                    image={audio.image}
                     category="ambient"
                     isLooping={audio.isLooping}
                     stopAllToken={playbackHandlers.stopAllToken}
