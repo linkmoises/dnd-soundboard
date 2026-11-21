@@ -1,6 +1,6 @@
 "use client";
 
-import { Info, Pause, Play, Repeat, Volume2 } from "lucide-react";
+import { Info, Pause, Play, Volume2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import {
@@ -42,7 +42,6 @@ const AudioPlayer = ({
     volume,
     loadFailed,
     togglePlay,
-    replay,
     handleVolumeChange,
   } = useAudioTrack({
     name,
@@ -76,16 +75,6 @@ const AudioPlayer = ({
       >
         {isPlaying ? <Pause size={20} /> : <Play size={20} />}
       </Button>
-      {!isLooping && (
-        <Button
-          onClick={replay}
-          variant="outline"
-          size="icon"
-          aria-label={`Repetir ${name}`}
-        >
-          <Repeat size={20} />
-        </Button>
-      )}
       <div className="flex items-center space-x-2 flex-1">
         <Volume2 size={20} className="shrink-0" />
         <Slider

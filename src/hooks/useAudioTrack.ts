@@ -127,87 +127,80 @@ export const useAudioTrack = ({
     stopTimeoutRef.current = window.setTimeout(() => finishStop(true), FADE_OUT_MS + 80);
   }, [clearStopTimeout, finishStop]);
 
-  const startPlayback = useCallback(
-    (restart: boolean) => {
-      const element = audioRef.current;
+  const startPlayback = useCallback(() => {
+    const element = audioRef.current;
 
-      if (!element) {
-        return;
-      }
+    if (!element) {
+      return;
+    }
 
-      clearStopTimeout();
+    clearStopTimeout();
 
-      if (restart || element.ended) {
-        element.currentTime = 0;
-      }
+    if (element.ended) {
+      element.currentTime = 0;
+    }
 
-      element.loop = isLooping;
+    element.loop = isLooping;
 
-      const output = ensureOutput();
-      const targetVolume = volumeRef.current / 100;
+    const output = ensureOutput();
+    const targetVolume = volumeRef.current / 100;
 
-      if (output) {
-        fadeTrackEnvelope(output, 0, 0);
-      } else {
-        element.volume = targetVolume;
-      }
+    if (output) {
+      fadeTrackEnvelope(output, 0, 0);
+    } else {
+      element.volume = targetVolume;
+    }
 
-      element
-        .play()
-        .then(() => {
-          if (output) {
-            const duration = element.duration;
-            const hasDuration = Number.isFinite(duration) && duration > 0;
-            const remainingMs = hasDuration
-              ? Math.max(0, (duration - element.currentTime) * 1000)
+    element
+      .play()
+      .then(() => {
+        if (output) {
+          const duration = element.duration;
+          const hasDuration = Number.isFinite(duration) && duration > 0;
+          const remainingMs = hasDuration
+            ? Math.max(0, (duration - element.currentTime) * 1000)
+            : null;
+          const endFadeMs =
+            hasDuration && !isLooping
+              ? Math.min(
+                  END_FADE_MAX_MS,
+                  Math.max(END_FADE_MIN_MS, duration * 1000 * END_FADE_RATIO)
+                )
               : null;
-            const endFadeMs =
-              hasDuration && !isLooping
-                ? Math.min(
-                    END_FADE_MAX_MS,
-                    Math.max(END_FADE_MIN_MS, duration * 1000 * END_FADE_RATIO)
-                  )
-                : null;
 
-            startTrackEnvelope(output, {
-              fadeInMs: FADE_IN_MS,
-              endFadeMs,
-              remainingMs,
-            });
-          }
+          startTrackEnvelope(output, {
+            fadeInMs: FADE_IN_MS,
+            endFadeMs,
+            remainingMs,
+          });
+        }
 
-          isPlayingRef.current = true;
-          setIsPlaying(true);
-          setLoadFailed(false);
-          onPlay(url, name, category);
-        })
-        .catch((error: unknown) => {
-          if (error instanceof DOMException && error.name === "AbortError") {
-            return;
-          }
+        isPlayingRef.current = true;
+        setIsPlaying(true);
+        setLoadFailed(false);
+        onPlay(url, name, category);
+      })
+      .catch((error: unknown) => {
+        if (error instanceof DOMException && error.name === "AbortError") {
+          return;
+        }
 
-          console.error(`Error al reproducir ${name}:`, error);
-          setLoadFailed(true);
+        console.error(`Error al reproducir ${name}:`, error);
+        setLoadFailed(true);
 
-          if (output) {
-            fadeTrackEnvelope(output, 0, 0);
-          }
-        });
-    },
-    [category, clearStopTimeout, ensureOutput, isLooping, name, onPlay, url]
-  );
+        if (output) {
+          fadeTrackEnvelope(output, 0, 0);
+        }
+      });
+  }, [category, clearStopTimeout, ensureOutput, isLooping, name, onPlay, url]);
 
   const togglePlay = useCallback(() => {
     if (isPlayingRef.current) {
       stopPlayback();
     } else {
-      startPlayback(false);
+      startPlayback();
     }
   }, [startPlayback, stopPlayback]);
-
-  const replay = useCallback(() => {
-    startPlayback(true);
-  }, [startPlayback]);
 
   const handleVolumeChange = (value: number[]) => {
     const nextVolume = value[0] ?? 0;
@@ -278,7 +271,6 @@ export const useAudioTrack = ({
     volume,
     loadFailed,
     togglePlay,
-    replay,
     handleVolumeChange,
   };
 };

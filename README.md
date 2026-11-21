@@ -91,7 +91,7 @@ music:
 Cuatro cosas y ya sabes manejarlo:
 
 - **Las tres secciones** son las tres columnas del tablero: `ambient` se ve como tarjetas, y `sfx` y `music` como grupos que se abren y se cierran (`groups`, cada uno con su `title` y sus `tracks`).
-- **Cada pista** lleva `name` (lo que se ve en pantalla) y `file` (el archivo dentro de `public/audio`, sin extensión). Opcionalmente `license` (el crédito que aparece al tocar el botón de información) y `loop` (`true` para bucle, `false` para que suene una sola vez).
+- **Cada pista** lleva `name` (lo que se ve en pantalla) y `file` (el archivo dentro de `public/audio`, sin extensión). Opcionalmente `license` (el crédito que aparece al tocar el botón de información) y `loop` (`true` para bucle, `false` para que suene una sola vez). En Efectos lo normal es `false`, porque un trueno suena y termina; si querés una lluvia de fondo, esa pista sola puede llevar `loop: true` y sigue sonando hasta que la pares.
 - **El orden del archivo es el orden del tablero.** Nada se ordena solo: si quieres mover una pista, mueves sus líneas.
 - **`license` y `loop` se heredan.** Se escriben una vez en `defaults` y valen para todo; si una sección o un grupo necesita otra cosa, lo pisa; y una pista puntual puede pisar a los dos. Por eso el archivo queda corto.
 
@@ -102,7 +102,7 @@ Editas el archivo, recargas la página y aparecen los cambios. Si te equivocaste
 Tocas un sonido y suena. Puedes tener varias pistas sonando a la vez: la ambientación de fondo, la música de la escena y los efectos puntuales.
 
 - **Ambiente**: tarjetas con portada. Se toca la tarjeta entera para reproducir o pausar, y el volumen se maneja desde el canal de Ambientación.
-- **Efectos y Música**: cada pista tiene su botón de play, su control de volumen y el botón de información con el crédito. Si la pista no está en bucle, aparece además un botón para repetirla.
+- **Efectos y Música**: cada pista tiene su botón de play, su control de volumen y el botón de información con el crédito. Para repetir un efecto, lo dejas terminar y vuelves a tocar play: arranca de cero. Que una pista sea en bucle o de una sola vez se decide en el catálogo, no en el tablero.
 - **La franja de canales** queda fija arriba, debajo del título, con **Ambientación**, **Efectos (SFX)** y **Música**. Cada canal tiene su volumen y su botón de _x_ para detenerlo completo. El volumen de cada pista se multiplica por el de su canal, así que puedes bajar la ambientación mientras la música y los efectos siguen sonando.
 - **Detener Todo** está arriba a la derecha y corta absolutamente todo.
 

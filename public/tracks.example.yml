@@ -46,6 +46,8 @@ sfx:
           file: "sfx-truenos"
         - name: "Lluvia"
           file: "sfx-lluvia"
+          # La sección apaga el loop, pero este efecto sí queremos que dure.
+          loop: true
     - title: "Combate"
       tracks:
         - name: "Espadas"
