@@ -65,14 +65,19 @@ La lista de audios que se muestran en el tablero se edita en `src/lib/audioFiles
       name: "Audio de ejemplo", 
       url: "/audio/audio-example", 
       isLooping: true,
-      license: "Autor"
+      license: "Autor",
+      image: "/audio/cover-ejemplo.jpg" // opcional
     },
   ],
 ```
 
+`image` es opcional: si no se indica, la tarjeta muestra un degradado con el icono de su categoría.
+
 ## Funcionamiento
 
-El funcionamiento es simple. Solo hay que tocar el botón de _play_ y el sonido se reproducirá. Pueden sonar varias pistas de audio a la vez, las cuales son resaltadas visualmente y cada una tiene su control de volumen individual. Los efectos de sonido se pueden configurar para reproducirse en _loop_ o una sola vez.
+El funcionamiento es simple. Solo hay que tocar el botón de _play_ y el sonido se reproducirá. Pueden sonar varias pistas de audio a la vez. Los efectos de sonido se pueden configurar para reproducirse en _loop_ o una sola vez.
+
+La **ambientación** se muestra como tarjetas de tres por fila: portada cuadrada, botón de _play_, nombre y créditos, todas con la misma altura. La tarjeta completa es el control de reproducción, sin controles por pista; su volumen se ajusta desde el canal de **Ambientación** de la barra inferior, así que el fader individual se reserva para **Música** y **Efectos**.
 
 Cuando algo se está reproduciendo aparece una barra inferior de mezcla con los tres canales del tablero: **Ambientación**, **Música** y **Efectos (SFX)**. Cada canal tiene su propio control de volumen, así que se puede bajar la ambientación poco a poco mientras la música y los efectos siguen sonando. El volumen de cada pista se multiplica por el volumen de su canal, y el botón de la _x_ detiene ese canal completo.
 

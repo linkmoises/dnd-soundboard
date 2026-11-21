@@ -4,6 +4,7 @@ import React, { useCallback, useMemo, useState } from "react";
 import { StopCircle } from "lucide-react";
 import { faDAndD } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import AudioCard from "@/components/AudioCard";
 import AudioPlayer from "@/components/AudioPlayer";
 import MixerBar from "@/components/MixerBar";
 import { ThemeToggle } from "@/components/ToogleDark";
@@ -14,23 +15,20 @@ import {
   getDefaultCategoryVolumes,
   type SoundCategory,
 } from "@/lib/sound-categories";
-import { ambientAudioFiles, effectsAudioFiles, musicAudioFiles } from "@/lib/audioFiles";
-
-type AudioFile = {
-  name: string;
-  url: string;
-  isLooping: boolean;
-  license: string;
-};
+import {
+  ambientAudioFiles,
+  effectsAudioFiles,
+  musicAudioFiles,
+  type AudioTrackData,
+} from "@/lib/audioFiles";
 
 type AudioSectionDefinition = {
   title: string;
-  files: AudioFile[];
+  files: AudioTrackData[];
 };
 
 type AudioSectionProps = PlaybackHandlers & {
-  title?: string;
-  audioFiles: AudioFile[];
+  audioFiles: AudioTrackData[];
   category: SoundCategory;
 };
 
@@ -62,7 +60,6 @@ const MUSIC_SECTIONS: AudioSectionDefinition[] = [
 ];
 
 const AudioSection = ({
-  title,
   audioFiles,
   category,
   stopAllToken,
@@ -70,24 +67,21 @@ const AudioSection = ({
   onPlay,
   onStop,
 }: AudioSectionProps) => (
-  <div>
-    {title && <h3 className="text-lg font-semibold mb-2">{title}</h3>}
-    <div className="space-y-2">
-      {audioFiles.map((audio) => (
-        <AudioPlayer
-          key={audio.url}
-          name={audio.name}
-          url={audio.url}
-          license={audio.license}
-          category={category}
-          isLooping={audio.isLooping}
-          stopAllToken={stopAllToken}
-          categoryStopToken={stopTokens[category]}
-          onPlay={onPlay}
-          onStop={onStop}
-        />
-      ))}
-    </div>
+  <div className="space-y-2">
+    {audioFiles.map((audio) => (
+      <AudioPlayer
+        key={audio.url}
+        name={audio.name}
+        url={audio.url}
+        license={audio.license}
+        category={category}
+        isLooping={audio.isLooping}
+        stopAllToken={stopAllToken}
+        categoryStopToken={stopTokens[category]}
+        onPlay={onPlay}
+        onStop={onStop}
+      />
+    ))}
   </div>
 );
 
@@ -192,12 +186,24 @@ const RPGSoundboard = () => {
           <div className="flex flex-col lg:flex-row gap-6">
             {/* Columna izquierda: Ambiente */}
             <div className="lg:w-1/3">
-              <AudioSection
-                title="Ambiente"
-                audioFiles={ambientAudioFiles}
-                category="ambient"
-                {...playbackHandlers}
-              />
+              <h3 className="text-lg font-semibold mb-2">Ambiente</h3>
+              <div className="grid auto-rows-fr grid-cols-3 gap-3">
+                {ambientAudioFiles.map((audio) => (
+                  <AudioCard
+                    key={audio.url}
+                    name={audio.name}
+                    url={audio.url}
+                    license={audio.license}
+                    image={audio.image}
+                    category="ambient"
+                    isLooping={audio.isLooping}
+                    stopAllToken={playbackHandlers.stopAllToken}
+                    categoryStopToken={playbackHandlers.stopTokens.ambient}
+                    onPlay={playbackHandlers.onPlay}
+                    onStop={playbackHandlers.onStop}
+                  />
+                ))}
+              </div>
             </div>
             {/* Columna central: Efectos de sonido */}
             <div className="lg:w-1/3 space-y-3">

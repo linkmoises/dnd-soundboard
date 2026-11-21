@@ -1,3 +1,11 @@
+export type AudioTrackData = {
+    name: string;
+    url: string;
+    isLooping: boolean;
+    license: string;
+    image?: string;
+};
+
 export const musicAudioFiles = {
     events: [
         { 
@@ -538,7 +546,7 @@ export const musicAudioFiles = {
     ],
 };
   
-export const ambientAudioFiles = [
+export const ambientAudioFiles: AudioTrackData[] = [
     { 
         name: "Alcantarillas", 
         url: "/audio/ambience-bardify-sewers", 
