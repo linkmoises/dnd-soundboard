@@ -1,0 +1,9 @@
+packages: []
+
+# Dependency lifecycle scripts stay blocked until approved explicitly.
+# sharp is Next.js' image optimizer and needs its install script.
+allowBuilds:
+  sharp: true
+
+# Do not install versions published less than a day ago (supply-chain safety).
+minimumReleaseAge: 1440

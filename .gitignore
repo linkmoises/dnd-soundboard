@@ -27,6 +27,7 @@
 # misc
 .DS_Store
 *.pem
+.atl
 
 # debug
 npm-debug.log*
@@ -42,3 +43,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# pnpm
+pnpm-debug.log*
